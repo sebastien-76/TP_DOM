@@ -1,0 +1,31 @@
+.bouton {
+    height: 20vh;
+    width: 100%;
+    text-align: center;
+}
+
+.bouton_choix_notation {
+    margin: 15vh auto;
+    width: 20vw;
+    height: 7vh;
+    border-radius: 5px;
+}
+
+.tableau {
+    border-spacing: 0px;
+    margin: 10vh auto;
+}
+
+.case {
+    padding: 0px;
+    border: 1px solid black;
+    width: 20vw;
+    height: 8vh;
+    text-align: center;
+}
+
+input {
+    width: 30%;
+    height: 40%;
+    border-radius: 5px;
+}
