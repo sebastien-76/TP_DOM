@@ -21,38 +21,48 @@ boutonChoixNotation.addEventListener("click", () => {
         element.removeAttribute("hidden");
     };
     /* bascule le background en blanc ou en vert suivant le type de notation */
-    for (var element of listeInput) {
+    for (let element of listeInput) {
         if (couleur.hidden) {
             element.style.backgroundColor = ("white");
+            element.value = "";
         }
         else {
             element.style.backgroundColor = ("green");
+            element.value = "";
         }
     };
         /* Focus sur le premier input */
         input.focus();
 });
 
-
-
-for (let element of listeInput) {
+listeInput.forEach((element) =>
     element.addEventListener("keyup", () => {
+            /* Cas de la notation par note */
         if (couleur.hidden) {
+            /* Vérification de la regex pour les notes */
            if (noteRegex.test(element.value)) {
+                /* Si regex ok, passage du focus en dessous sauf pour le dernier */
                 const parentElementNode = element.parentNode;
                 const grandParentElementNode = parentElementNode.parentNode;
                 const next = grandParentElementNode.nextElementSibling;
-                if (next !== null) {
+                if (next != null) {
                     const nextInput = next.querySelector("input");
                     nextInput.focus();
-                    }
+                } else {
+                    element.blur();
+                };
+
            } else {
+                /* Sinon regex ko, on vide l'input et message pour demander de rentrer une note correcte */
                 element.value = "";
                 alert("veuillez entrer une note entre 1 et 5!");
                 }
            } 
         else {
+                /* Cas de la notation par couleur */
+                /* Vérification de la regex couleur */
             if (couleurRegex.test(element.value)) {
+                /* si ok, on tranforme l'entrée en couleur et on supprimer l'entrée */
                 switch (element.value) {
                     case '1':
                         element.style.backgroundColor = ("red");
@@ -71,17 +81,22 @@ for (let element of listeInput) {
                         element.value = ("");
                         break;
                 };
+                /* Passage du focus en dessous */
                 const parentElementNode = element.parentNode;
                 const grandParentElementNode = parentElementNode.parentNode;
                 const next = grandParentElementNode.nextElementSibling;
-                if (next !== null) {
+                if (next != null) {
                     const nextInput = next.querySelector("input");
                     nextInput.focus();
-                    }
+                } else {
+                    element.blur();
+                }
             } else {
+                /* si regex ko, on vide l'entréé et on demande une nouvelle entrée*/
                 element.value = "";
                 alert("veuillez entrer une des quatre couleurs autorisées!");
                 }
             }
         }   
-    )};
+    )
+);

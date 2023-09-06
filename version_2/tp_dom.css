@@ -8,7 +8,8 @@
     margin: 15vh auto;
     width: 20vw;
     height: 7vh;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-weight: bold;
     background-color: #00FE7E;
 }
 
@@ -30,4 +31,16 @@ input {
     width: 30%;
     height: 40%;
     border-radius: 5px;
+    text-align: center;
 }
+.reset {
+    text-align: center;
+    padding-top: 5vh;
+}
+.bouton_reset {
+    width: 10vw;
+    height: 5vh;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #01D758;
+}   
