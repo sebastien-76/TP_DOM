@@ -35,16 +35,16 @@ boutonChoixNotation.addEventListener("click", () => {
         input.focus();
 });
 
-listeInput.forEach((element) =>
+for (let element of listeInput) {
+    const parentElementNode = element.parentNode;
+    const grandParentElementNode = parentElementNode.parentNode;
+    const next = grandParentElementNode.nextElementSibling;
     element.addEventListener("keyup", () => {
             /* Cas de la notation par note */
         if (couleur.hidden) {
             /* Vérification de la regex pour les notes */
-           if (noteRegex.test(element.value)) {
+            if (noteRegex.test(element.value)) {
                 /* Si regex ok, passage du focus en dessous sauf pour le dernier */
-                const parentElementNode = element.parentNode;
-                const grandParentElementNode = parentElementNode.parentNode;
-                const next = grandParentElementNode.nextElementSibling;
                 if (next != null) {
                     const nextInput = next.querySelector("input");
                     nextInput.focus();
@@ -52,12 +52,12 @@ listeInput.forEach((element) =>
                     element.blur();
                 };
 
-           } else {
+            } else {
                 /* Sinon regex ko, on vide l'input et message pour demander de rentrer une note correcte */
                 element.value = "";
                 alert("veuillez entrer une note entre 1 et 5!");
-                }
-           } 
+            }
+        } 
         else {
                 /* Cas de la notation par couleur */
                 /* Vérification de la regex couleur */
@@ -81,22 +81,18 @@ listeInput.forEach((element) =>
                         element.value = ("");
                         break;
                 };
-                /* Passage du focus en dessous */
-                const parentElementNode = element.parentNode;
-                const grandParentElementNode = parentElementNode.parentNode;
-                const next = grandParentElementNode.nextElementSibling;
-                if (next != null) {
-                    const nextInput = next.querySelector("input");
-                    nextInput.focus();
-                } else {
-                    element.blur();
-                }
+            /* Passage du focus en dessous */
+            if (next != null) {
+                const nextInput = next.querySelector("input");
+                nextInput.focus();
             } else {
-                /* si regex ko, on vide l'entréé et on demande une nouvelle entrée*/
-                element.value = "";
-                alert("veuillez entrer une des quatre couleurs autorisées!");
-                }
+                element.blur();
             }
-        }   
-    )
-);
+            } else {
+            /* si regex ko, on vide l'entréé et on demande une nouvelle entrée*/
+            element.value = "";
+            alert("veuillez entrer une des quatre couleurs autorisées!");
+            }
+        }
+    }   
+)};

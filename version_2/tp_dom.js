@@ -15,7 +15,7 @@ boutonChoixNotation.addEventListener("click", () => {
         if (boutonInitial.getAttribute("hidden") == null) {
             localStorage.clear();
         } 
-        boutonInitial.setAttribute("hidden", true)
+        boutonInitial.setAttribute("hidden", "true")
         choixNotation.removeAttribute("hidden")
     // Switch le type de notation
     note.toggleAttribute("hidden");
@@ -46,8 +46,6 @@ boutonChoixNotation.addEventListener("click", () => {
         // Focus sur le premier input
         input.focus();
 });
-
-
 
 for (let element of listeInput) {
     element.addEventListener("keyup", () => {
@@ -123,7 +121,7 @@ for (let element of listeInput) {
         }   
     )};
 
-    // Bouton pour reseter le note par type de notation
+// Bouton pour reseter le note par type de notation
 boutonReset.addEventListener("click", () => {
     for (let element of listeInput) {
         const parentElementNode = element.parentNode;
